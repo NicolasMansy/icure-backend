@@ -38,6 +38,16 @@
 <link rel="import" href="../dynamic-form/entity-selector.html">
 
 
+<link rel="import" href="../../../bower_components/vaadin-material-theme/vaadin-grid.html">
+<link rel="import" href="../../../bower_components/vaadin-grid/vaadin-grid.html">
+
+<link rel="import" href="../../../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../../../bower_components/vaadin-grid/vaadin-grid-column.html">
+<link rel="import" href="../../../bower_components/vaadin-grid/vaadin-grid-sorter.html">
+<link rel="import" href="../../../bower_components/vaadin-themes/material/vaadin-date-picker.html">
+<link rel="import" href="../../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
+
+
 <dom-module id="ht-msg-detail">
 	<template>
 		<style>
@@ -347,16 +357,54 @@
 				overflow-y: auto;
 				height: calc(100% - 48px);
 				padding-bottom: 32px;
+				width: 95%;
+			}
+
+			.msg-header {
+				width: 95%;
+				padding-top: 20px;
+				padding-left:20px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid grey;
+			}
+			.msg-header-cellTitle
+			{
+				font-weight: bold;
 			}
 		</style>
 		<template is="dom-if" if="[[messages]]">
 		<div class="details-panel" on-dragover="_onDrag">
 			<div class="contact-card-container">
 				<template is="dom-repeat" items="[[messages]]" as="msg">
-				From : [[msg.fromAddress]]
-				To : [[msg.toAddresses]]
-				Subject: [[msg.subject]]
-					Body: <template is="dom-repeat" items="[[msg.body]]" as="text">[[text]]</template>
+
+					<div class="msg-header">
+						<table>
+							<tr>
+								<td class="msg-header-cellTitle">[[localize('dat','Date',language)]]:</td>
+								<td>[[_timeFormat(msg.received)]]</td>
+							</tr>
+							<tr>
+								<td class="msg-header-cellTitle">[[localize('sen','Sender',language)]]:</td>
+								<td>[[msg.fromAddress]]</td>
+							</tr>
+							<tr>
+								<td class="msg-header-cellTitle">[[localize('rec','Recipient',language)]]:</td>
+								<td>[[msg.toAddresses]]</td>
+							</tr>
+							<tr>
+								<td class="msg-header-cellTitle">[[localize('sub','Subject',language)]]:</td>
+								<td>[[msg.subject]]</td>
+							</tr>
+
+						</table>
+
+					</div>
+					<div class="msg-body">
+						<template is="dom-repeat" items="[[msg.body]]" as="text">
+							[[text]]
+						</template>
+					</div>
+
 				</template>
 			</div>
 		</div>
@@ -442,6 +490,10 @@ class HtMsgDetail extends Polymer.TkLocalizerMixin(Polymer.mixinBehaviors([], Po
 			}
         }.bind(this))
 	}
+
+    _timeFormat(date) {
+        return date && this.api.moment(date).format(date > 99991231 ? 'DD/MM/YYYY HH:mm' : 'DD/MM/YYYY') || '';
+    }
 
 }
 

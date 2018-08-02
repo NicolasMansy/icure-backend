@@ -493,10 +493,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <paper-dialog id="add-patient-dialog">
             <div class="horizontal">
-                <paper-input label="Last name" style="min-width:200px" value="{{lastName}}"></paper-input>
-                <paper-input label="First name" value="{{firstName}}"></paper-input>
-                <vaadin-date-picker label="Date of Birth" i18n="[[i18n]]" value="{{dateAsString}}"></vaadin-date-picker>
-            </div>
+            <paper-input label="Last name" style="min-width:200px" value="{{lastName}}"></paper-input>
+            <paper-input label="First name" value="{{firstName}}"></paper-input>
+            <vaadin-date-picker label="Date of Birth" i18n="[[i18n]]" value="{{dateAsString}}"></vaadin-date-picker>
+        </div>
             <div class="buttons">
                 <paper-button dialog-dismiss>[[localize('can','Cancel',language)]]</paper-button>
                 <paper-button dialog-confirm autofocus on-tap="confirm">[[localize('cre','Create',language)]]

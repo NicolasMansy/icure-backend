@@ -275,6 +275,7 @@ class HealthProblemSelector extends Polymer.TkLocalizerMixin(Polymer.mixinBehavi
 			this.api.code().getCodes(this.selectedItem.codes.join(',')).then(codes => {
 				this.set('entity.codes', codes);
 			});
+		//	console.log(this.entity);
 		}
 	}
 

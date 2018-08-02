@@ -1030,8 +1030,6 @@ class HtPatDetailCtcDetailPanel extends Polymer.TkLocalizerMixin(Polymer.mixinBe
                     if (idx) {
                         pdf.addPage();
                     }
-
-
                     const element = this.root.querySelector("#barCode");
                     JsBarcode(element, `${nihii_format(hcp.nihii)}`, {format: "CODE128A", displayValue: false, height: 50});
                     var jpegUrl = element.toDataURL("image/jpeg");
@@ -1079,6 +1077,7 @@ class HtPatDetailCtcDetailPanel extends Polymer.TkLocalizerMixin(Polymer.mixinBe
                     pdf.setFontSize(7);
                     pdf.setFont('Arial');
                     pdf.text(10, 474, `Dr. ${hcp.firstName} ${hcp.lastName}`);
+                    // ADRESSE USE ????
                     pdf.setFontSize(7);
                     pdf.setFont('Arial');
                     pdf.text(10, 484, `${hcp.addresses.street || ""} ${hcp.addresses.houseNumber || ""}`);
@@ -1087,6 +1086,7 @@ class HtPatDetailCtcDetailPanel extends Polymer.TkLocalizerMixin(Polymer.mixinBe
                     pdf.text(10, 494, `${hcp.addresses.postalCode || ""} ${hcp.addresses.city || ""}`);
                     pdf.setFontSize(7);
                     pdf.setFont('Arial');
+
                   //  const resultat = hcp.addresses[0].telecoms.find( telecom => telecom.telecomType === "phone")
                   //  pdf.text(10, 504, `Tél : ${(resultat) ? resultat.telecomNumber : ""} `);
                     //	hcp.addresse.map(adr => { adr.telecoms.find(telecom => telecom.telecomType === "phone")})

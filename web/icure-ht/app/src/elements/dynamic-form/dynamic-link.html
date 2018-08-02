@@ -81,6 +81,7 @@ class DynamicLink extends Polymer.TkLocalizerMixin(Polymer.mixinBehaviors([], Po
     }
 
     link(e, target) {
+
         const he = this.linkables && this.linkables.find(he => he.id === e.target.id) || null
         if (!he) {
             return;

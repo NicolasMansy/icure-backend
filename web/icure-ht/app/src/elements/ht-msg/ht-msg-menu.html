@@ -391,7 +391,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 		</style>
 		<div class="col-left">
-			<paper-button class="new-msg-btn">[[localize('new_mes','New Message',language)]]</paper-button>
+			<ht-msg-new api="[[api]]" i18n="[[i18n]]" language="[[language]]" resources="[[resources]]"  user="[[user]]" ></ht-msg-new>
 			<collapse-button>
 				<paper-item slot="sublist-collapse-item" class="menu-trigger menu-item" on-tap="_inbox" elevation="">
 					<div class="one-line-menu list-title"><iron-icon icon="icons:inbox"></iron-icon>[[localize('inb','Inbox',language)]] <template is="dom-if" if="[[unreadNumber]]"><span class="unreadNumber">[[unreadNumber]]</span></template></div>
