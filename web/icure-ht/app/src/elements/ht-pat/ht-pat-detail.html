@@ -765,7 +765,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				overflow: hidden;
 			}
 
-			#insuranceStatus, #hubStatus, #tlStatus, #consentStatus  {
+			#insuranceStatus, #hubStatus, #tlStatus, #consentStatus , #ebmPraticeNet {
 				--paper-fab-background: var(--app-background-color-dark);
 				--paper-fab-keyboard-focus-background: var(--app-background-color);
 				color: var(--app-primary-color-dark);
@@ -931,6 +931,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 									<paper-fab id="consentStatus" mini icon="icons:thumb-up" on-tap="_openConsentDialog"></paper-fab>
 									<paper-fab id="tlStatus" mini icon="vaadin:specialist" on-tap="_openTherLinkDialog"></paper-fab>
 									<paper-fab id="hubStatus" mini icon="hardware:device-hub"></paper-fab>
+									<a href="https://www.ebpnet.be/" target="_blank">
+										<paper-fab id="ebmPraticeNet" mini icon="icons:question-answer"></paper-fab>
+									</a>
 								</div>
 							</div>
 						</paper-item>
@@ -1443,6 +1446,7 @@ class HtPatDetail extends Polymer.TkLocalizerMixin(Polymer.Element) {
         //this.root.querySelector('#legaltext').innerHTML = this.localize('cons_legal', 'Informed consent legal text ...', this.language)
         this.$.therLinkDialog.open();
 	}
+
 
     _hcpIdent(tl){
 	    return tl.therapeuticLink.hcParty.nihii || ''
